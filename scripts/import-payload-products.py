@@ -11,16 +11,17 @@ Target (Medusa 2.21 Admin API):
 - product categories, products with options/variants/prices(usd)/images(url)
 """
 import json
+import os
 import re
 import sys
 import urllib.request
 import urllib.error
 
-PAYLOAD = "https://6bwtywykbkuqa9pgor5wfwr5.198.211.99.38.sslip.io/api"
-MEDUSA = "http://localhost:9000"
-EMAIL = "john@widsix.com"
-PASSWORD = "daab8475025284ed44babfd7"
-SALES_CHANNEL = "sc_01M3Z7ZW9Z9095DXJGQ84GW71N"
+PAYLOAD = os.environ.get("PAYLOAD_URL", "https://6bwtywykbkuqa9pgor5wfwr5.198.211.99.38.sslip.io/api")
+MEDUSA = os.environ.get("MEDUSA_URL", "http://localhost:9000")
+EMAIL = os.environ.get("MEDUSA_ADMIN_EMAIL", "john@widsix.com")
+PASSWORD = os.environ.get("MEDUSA_ADMIN_PASSWORD", "daab8475025284ed44babfd7")
+SALES_CHANNEL = os.environ.get("MEDUSA_SALES_CHANNEL", "sc_01M3Z7ZW9Z9095DXJGQ84GW71N")
 OUT_MAP = "scripts/payload-to-medusa-map.json"
 
 
