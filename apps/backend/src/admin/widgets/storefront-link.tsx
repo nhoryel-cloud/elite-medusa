@@ -3,9 +3,9 @@ import { Button, Container, Heading, Text } from "@medusajs/ui"
 
 /**
  * Storefront URL. The admin UI is bundled for the browser, so this is a plain
- * constant — update it when the storefront moves hosts (e.g. production).
+ * constant — update it when the storefront moves hosts.
  */
-const STOREFRONT_URL = "http://localhost:3000"
+const STOREFRONT_URL = "https://6bwtywykbkuqa9pgor5wfwr5.198.211.99.38.sslip.io"
 
 type ProductData = {
   id?: string
