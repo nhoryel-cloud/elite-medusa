@@ -32,4 +32,6 @@ COPY --from=build /app/apps/backend ./apps/backend
 COPY package.json pnpm-workspace.yaml turbo.json ./
 WORKDIR /app/apps/backend
 EXPOSE 9000
-CMD ["pnpm", "start"]
+# `medusa start` must run with cwd = the compiled server dir (.medusa/server),
+# otherwise the admin dashboard lookup (public/admin) fails at startup.
+CMD ["sh", "-c", "cd .medusa/server && exec /app/apps/backend/node_modules/.bin/medusa start"]
