@@ -35,7 +35,8 @@ TOKEN=$(curl -sS -f -X POST "$MEDUSA_URL/auth/user/emailpass" \
 echo "token ok"
 
 echo "== store -> USD"
-req POST /admin/store "{\"supported_currencies\":[{\"currency_code\":\"usd\",\"is_default\":true}]}"
+STORE_ID=$(req GET /admin/stores | python3 -c "import sys,json;print(json.load(sys.stdin)['stores'][0]['id'])")
+req POST "/admin/stores/$STORE_ID" "{\"supported_currencies\":[{\"currency_code\":\"usd\",\"is_default\":true}]}"
 
 echo "== regions"
 for reg in $(req GET /admin/regions?limit=50 | python3 -c "
